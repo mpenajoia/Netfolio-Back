@@ -1,8 +1,8 @@
 const mongoose = require('mongoose')
 
-mongoose.connect(mongoURI, {useNewUrlParser:true})
-
 let mongoURI = "";
+
+mongoose.connect(mongoURI, {useNewUrlParser:true})
 
 if (process.env.NODE_ENV === "production") {
     mongoURI = process.env.DB_URL;

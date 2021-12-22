@@ -13,6 +13,9 @@ app.use(express.urlencoded({extended:false}))
 app.get('/', (req, res) => {
   res.send('Welcome to my api')
 } )
+app.get('/test', (req, res) => {
+  res.send('Test Page')
+} )
 app.use('/assets', assetController)
 
 app.set("port", process.env.PORT || 4000);

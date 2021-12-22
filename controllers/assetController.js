@@ -5,7 +5,7 @@ const Asset = require("../models/assetSchema")
 router.post('/', (req, res) => {
     Asset.create(req.body)
         .then(asset => {
-            console.log(req.body)
+            // console.log(req.body)
             res.status(201).json(asset)
         })
 })

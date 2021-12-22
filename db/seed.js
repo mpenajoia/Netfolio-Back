@@ -10,5 +10,7 @@ Asset.deleteMany({}).then(() => {
         invested: 800,
         category: "Stock",
         current: 942.87
+    }).then(() => {
+        process.exit()
     })
 })

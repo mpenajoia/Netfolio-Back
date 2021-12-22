@@ -6,7 +6,6 @@ let mongoURI = "";
 
 if (process.env.NODE_ENV === "production") {
     mongoURI = process.env.DB_URL;
-    console.log(DB_URL)
   } else {
     mongoURI = "mongodb://localhost/assets";
     

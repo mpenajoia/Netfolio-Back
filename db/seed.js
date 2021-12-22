@@ -1,18 +1,14 @@
-module.exports = [
-    {
-        "symbol": "TSLA",
-        "name": "Tesla",
-        "qty": 1,
-        "invested": 800,
-        "category": "Stock",
-        "current": 942.87
-    },
-    {
-        "symbol": "BTC",
-        "name": "Bitcoin",
-        "qty": .05,
-        "invested": 800,
-        "category": "Crypto",
-        "current": 48520.36
-    }
-]
+const mongoose = require('mongoose')
+
+const Asset = require('../models/assetSchema')
+
+Asset.deleteMany({}).then(() => {
+    Asset.create({
+        symbol: "TSLA",
+        name: "Tesla",
+        qty: 1,
+        invested: 800,
+        category: "Stock",
+        current: 942.87
+    })
+})

@@ -9,10 +9,11 @@ app.use(morgan('combined'))
 app.use(cors())
 app.use(express.json())
 app.use(express.urlencoded({extended:false}))
-app.use('/assets', assetController)
+
 app.get('/', (req, res) => {
   res.send('Welcome to my api')
 } )
+app.use('/assets', assetController)
 
 app.set("port", process.env.PORT || 4000);
 

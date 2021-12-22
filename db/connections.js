@@ -1,6 +1,6 @@
 const mongoose = require('mongoose')
 
-mongoose.connect('mongodb://localhost/assets', {useNewUrlParser:true})
+mongoose.connect(mongoURI, {useNewUrlParser:true})
 
 let mongoURI = "";
 

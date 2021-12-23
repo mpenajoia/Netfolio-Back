@@ -2,9 +2,9 @@
 
 ## Project Links
 
-- [Deployed](#)
-- [Front End](#)
-- [Back End](#)
+- [Deployed Backend](https://netfolio-backend.herokuapp.com/assets)
+- [Front End](https://github.com/mpenajoia/Netfolio-Front)
+- [Back End](https://github.com/mpenajoia/Netfolio-Back)
 
 
 ## Project Description
@@ -17,8 +17,8 @@ User will be able to input their stock or crypto asset name/symbol with the amou
 
 ## Technologies
 
-React Native preferably for front end, if not, just React
-Express and Mongo for the back end
+React Native - front end
+Heroku/Express/Mongo for the back end
 
 ## API(s)
 
@@ -32,8 +32,8 @@ Finnhub.io seems to provide both stock and crypto price, further investigation n
 
 ## Wireframes
 
-- [Wireframe](https://res.cloudinary.com/ds2rdojzc/image/upload/v1639689826/CryptoDreamsApp/Screen_Shot_2021-12-16_at_12.03.09_PM_xx7f4v.png)
-- [React Architecture](https://res.cloudinary.com/ds2rdojzc/image/upload/a_270/v1639689844/CryptoDreamsApp/Netfolio_Arch_kxk12c.jpg)
+- [Wireframe](./planning/img/wire.png)
+- [React Architecture](./planning/img/arch.jpg)
 
 
 ### MVP:
@@ -66,47 +66,40 @@ Finnhub.io seems to provide both stock and crypto price, further investigation n
 ## Components
 
 | Component | Description | 
-| --- | :---: |  
-| App | This will make the initial data pull and include React Router| 
-| Header | This will render the header housing the nav and remain across all pages | 
-| Footer | This will render the footer and remain across all pages |
-| Main | This will render the main content of the Category  Bar, Content, Assets and Charts Components |
-| Category Bar | Will render the Stock and Crypto categories to display on the Content Components | 
-| Content | Renders the main content of the page, either Charts or Assets |
-| Add Asset | Component to allow user to input their asset |
-| Assets | Component that will list all the assets |
-| Asset | Component to allow for each item to be editable |
-| Charts | Component to showcase charting layouts |
-| Chart | Individual chart component |
-| Options| Will render options to toggle between different charts |
+| :---: | :---: |  
+| App | initial GET request and render Tab Navigator| 
+| Header | renders Logo and remains across all pages | 
+| Main | content wrapper under header for all other components | 
+| Add Asset | form for POST request |
+| Edit Asset | modal component with form for PUT request |
+| Assets | component that will list all the assets |
+| Asset | component for each asset with DELETE request |
 
 
 ## MVP
 
 | Component | Priority | Estimated Time | Time Invested |
 | --- | :---: |  :---: | :---: | 
-| Making components and linking/routing them correctly | H | 6hrs|  hrs | 
-| Main/Content/Footer/Nav | H | 3hrs|  hrs | 
-| Taking user input value to run math logic and return results | H | 5hrs|  hrs | 
-| Aesthetics/CSS | H | 7hrs|  hrs | 
-| Responsiveness | H | 4hrs|  hrs | 
-| Correct use of React Hooks | H | 4hrs|  hrs | 
-| Correct use of methods | H | 4hrs|  hrs | 
-| Pulling Api data | H | 2hrs|  hrs | 
-| Populating Api data correctly | H | 5hrs|  hrs | 
-| Total | H | 40hrs| hrs |
+| Making components and linking/routing them correctly | H | 6hrs|  6hrs | 
+| Main/Assets/Asset | H | 3hrs|  4hrs | 
+| Taking user input value to run math logic and return results | H | 5hrs|  3hrs | 
+| Aesthetics/CSS | H | 7hrs|  6hrs | 
+| Responsiveness | H | 4hrs|  8hrs | 
+| Correct use of React Hooks | H | 4hrs|  3hrs | 
+| Pulling Api data | H | 2hrs|  2hrs | 
+| Populating Api data correctly | H | 5hrs|  1hrs | 
+| Deployment | H | 5hrs|  4hrs | 
+| Total | H | 41hrs| 37hrs |
 
 ## Post MVP
 
 | Component | Priority | Estimated Time | Time Invested |
 | --- | :---: |  :---: | :---: | 
-| Pie charts and other charts | H | 6hrs|  hrs | 
-| User Log in | M | 10hrs|  hrs |
-| Final tweaks | M | 4hrs | hrs |  
-| Total | H | 20hrs| hrs |
+| Pie charts and other charts | H | 6hrs|  -hrs | 
+| User Log in | M | 10hrs|  -hrs |
+| Final tweaks | M | 4hrs | 1hrs |  
+| Total | H | 20hrs| 1hrs |
 
-
-Total time: 31.5hrs
 
 
 ## Inspiration
@@ -117,5 +110,18 @@ Layout and color palette inspirations
  - [Bitcoin UI Kit by Maxim Grekov](https://www.behance.net/gallery/62362875/Stock-exchangeBitcoin-UI-Kit-for-Cryptocurrency-Vol-01?tracking_source=search_projects_recommended%7Cstock%20app) 
 
 ## Code Snippet
+Just a simple check to confirm the data has been fetched and saved in a state before a map function is triggered
 
-TBD
+```js
+if (props.assets){
+        assetsMap = props.assets.map((item, index) => {
+            netWorthArr.push(item.qty * item.current)
+            netInvestedArr.push(item.invested)
+            return(
+                <Asset  api={props.api} gainLoss={gainLoss} key={index} getAssets={props.getAssets} setAssets={props.setAssets} assets={props.assets} index={index} item={item}/>
+                )
+            })
+    }else{
+        assetsMap = <Text>Map empty</Text>
+    }
+```
